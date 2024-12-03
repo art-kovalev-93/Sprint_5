@@ -4,15 +4,15 @@ from locators import Locators
 
 
 def test_open_rolls_tab(driver):
-    driver.find_element(*Locators.FILLING_TAB).click()
-    driver.find_element(*Locators.ROLLS_TAB).click()
-    assert driver.find_element(*Locators.ROLLS_TAB).is_displayed()
+    driver.find_elements(*Locators.PARTS_TABS)[2].click()
+    driver.find_elements(*Locators.PARTS_TABS)[0].click()
+    assert driver.find_elements(*Locators.PARTS_TABS)[0].is_displayed()
 
 def test_open_souses_tab(driver):
-    driver.find_element(*Locators.FILLING_TAB).click()
-    driver.find_element(*Locators.SOUSES_TAB).click()
-    assert driver.find_element(*Locators.SOUSES_TAB).is_displayed()
+    driver.find_elements(*Locators.PARTS_TABS)[2].click()
+    driver.find_elements(*Locators.PARTS_TABS)[1].click()
+    assert  driver.find_elements(*Locators.PARTS_TABS)[1].is_displayed()
 
 def test_open_filling_tab(driver):
-    driver.find_element(*Locators.FILLING_TAB).click()
-    assert driver.find_element(*Locators.FILLING_TAB).is_displayed()
+    driver.find_elements(*Locators.PARTS_TABS)[2].click()
+    assert driver.find_elements(*Locators.PARTS_TABS)[2].is_displayed()

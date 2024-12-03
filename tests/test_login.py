@@ -1,26 +1,29 @@
 from selenium.webdriver.common.by import By
-from conftest import driver, login
+from conftest import driver
+from helpers import login
+from locators import Locators
+from urls import Url
 
 
 
 def test_login_in_acc_btn(driver):
-    driver.find_element(By.CSS_SELECTOR,'main button').click()
+    driver.find_element(*Locators.LOGIN_BTN).click()
     login(driver)
-    assert 'https://stellarburgers.nomoreparties.site/' == driver.current_url
+    assert Url.MAIN_PAGE == driver.current_url
 
 def test_login_personal_cabinet_btn(driver):
-    driver.find_element(By.CSS_SELECTOR,'[href="/account"] p').click()
+    driver.find_element(*Locators.PERSONAL_ACCOUNT_BTN).click()
     login(driver)
-    assert 'https://stellarburgers.nomoreparties.site/' == driver.current_url
+    assert Url.MAIN_PAGE == driver.current_url
 
 def test_login_on_registration_page(driver):
-    driver.get('https://stellarburgers.nomoreparties.site/register')
-    driver.find_element(By.CSS_SELECTOR,'[href="/login"]').click()
+    driver.get(Url.REGISTRATION_PAGE)
+    driver.find_element(*Locators.LOGIN_URL).click()
     login(driver)
-    assert 'https://stellarburgers.nomoreparties.site/' == driver.current_url
+    assert Url.MAIN_PAGE == driver.current_url
 
 def test_login_on_forgot_password_page(driver):
-    driver.get('https://stellarburgers.nomoreparties.site/forgot-password')
-    driver.find_element(By.CSS_SELECTOR,'[href="/login"]').click()
+    driver.get(Url.FORGOT_PSW_PAGE)
+    driver.find_element(*Locators.LOGIN_URL).click()
     login(driver)
-    assert 'https://stellarburgers.nomoreparties.site/' == driver.current_url
+    assert Url.MAIN_PAGE == driver.current_url

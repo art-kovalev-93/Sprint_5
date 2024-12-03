@@ -1,7 +1,8 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from conftest import create_name, create_email, create_password, open_registration_form, login, driver
+from conftest import driver
 from locators import Locators
+from helpers import create_name, create_email, create_password, open_registration_form
 
 
 def test_registration_success(driver):
